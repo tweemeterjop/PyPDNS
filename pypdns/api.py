@@ -80,7 +80,7 @@ class PDNSRecord:
             # Accordingly to the specs, the type can be a string OR an int. we normalize to str
             rrtype: str = RdataType(self._raw_record['rrtype']).name
         else:
-            rrtype = RdataType[self._raw_record['rrtype']].name
+            rrtype = RdataType[self._raw_record['rrtype'].upper()].name
 
         if not isinstance(self._raw_record['rdata'], (str, list)):
             raise PDNSRecordTypeError('rdata', 'str, list of string', self._raw_record["rdata"])
